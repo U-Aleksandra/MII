@@ -1,0 +1,18 @@
+﻿@model Практика_задание2.News_draft
+@{
+    ViewBag.Title = "Удаление статьи";
+}
+
+<h2>Удаление статьи</h2>
+<h3>Вы уверены, что хотите удалить это?</h3>
+<div class="text">
+    <h5>@Html.DisplayFor(m => m.date) </h5>
+    <h2>@Html.DisplayFor(m => m.header)</h2>
+    <p>@Html.DisplayFor(m => m.article)</p>
+    <h5>@Html.DisplayFor(m => m.author)</h5>
+</div>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+    @Html.ActionLink("Назад", "Index");
+}

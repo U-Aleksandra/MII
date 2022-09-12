@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Практика_задание2.News_draft>
+
+@{
+    ViewBag.Title = "Новостной портал";
+}
+
+<head>
+    <link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
+</head>
+
+<div class="four">
+    <h1>Новостной портал</h1>
+</div>
+
+@foreach (var item in Model)
+{
+    if (item.publish == true)
+    {
+<div class="text">
+    <h5 style="text-indent: 20px; font-style: initial">@Html.DisplayFor(m => item.date) </h5>
+    <h2 style="font-weight:800">@Html.DisplayFor(m => item.header)</h2>
+    <p>@Html.DisplayFor(m => item.article)</p>
+    <h5 style="font-weight: 700">@Html.DisplayFor(m => item.author)</h5>
+</div>
+        }
+    }

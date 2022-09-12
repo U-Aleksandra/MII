@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Практика_задание2.News_draft>
+@{
+    ViewBag.Title = "Публикация статей";
+}
+
+<h2>Публикация статей</h2>
+
+@if ((Roles.IsUserInRole("admin")))
+{
+<p>
+    @Html.ActionLink("Добавить новую статью", "Create_News")
+</p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("ID")
+        </th>
+        <th>
+            @Html.DisplayName("Дата написания статьи")
+        </th>
+        <th>
+            @Html.DisplayName("Заголовок статьи")
+        </th>
+        <th>
+            @Html.DisplayName("Текст статьи")
+        </th>
+        <th>
+            @Html.DisplayName("Автор")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.publish == false)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.header)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.article)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.author)
+            </td>
+            <td>
+                @if ((Roles.IsUserInRole("admin")))
+                {
+                @Html.ActionLink("Редактировать", "Edit_News", new { id = item.ID })
+                @Html.ActionLink("Удалить", "Delete_News", new { id = item.ID })
+                }
+                @Html.ActionLink("Опубликовать", "Publish_News", new { id = item.ID })
+            </td>
+        </tr>
+        }
+    }
+
+</table>

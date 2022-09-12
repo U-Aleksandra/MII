@@ -1,0 +1,19 @@
+﻿@model Практика_задание2.News_draft
+@{
+    ViewBag.Title = "Публикация";
+}
+
+<h2>Опубликовать данную статью?</h2>
+
+<div class="text">
+    <h5 style="text-indent: 20px; font-style: initial">@Html.DisplayFor(m => m.date) </h5>
+    <h2 style="font-weight:800">@Html.DisplayFor(m => m.header)</h2>
+    <p>@Html.DisplayFor(m => m.article)</p>
+    <h5 style="font-weight: 700">@Html.DisplayFor(m => m.author)</h5>
+</div>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Опубликовать" />
+    @Html.ActionLink("Назад", "Index");
+}
